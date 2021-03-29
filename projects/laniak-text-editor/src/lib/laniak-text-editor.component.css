@@ -1,75 +1,88 @@
-svg{
-    height: 12px;
-    width: 12px;
+:host
+{
+  --lan-background: #FFF;
+  --lan-border-color: #d3d3d3;
+  --lan-content-box-border: #eeeeee;
+  --lan-color: #000;
+  --lan-default-font: "Arial"; 
+  --lan-theme-color: blue;
 }
 
-.EditorPanal
-{
-  background-color: #fff;
+.Lan-Editor-Ico {
+  height: 12px;
+  width: 12px;
+}
+
+.EditorPanal {
+  background-color: var(--lan-background);
   height: auto;
   padding: 5px;
   margin: 5px !important;
-  border:0.2px solid lightgray;
-  box-shadow: 2px 2px 2px #d6d6d6;
+  border-radius:3px;
+  border: 0.5px solid var(--lan-border-color);
 }
-.Editor
-{
-  width: 100%;
-  height: 100%;
-  resize: vertical;
-  border: none;
-  border-bottom: 2px solid #9575CD;
-  padding: 10px;
-}
-.EditorPage
-{
-  background-color: white;
+
+.EditorPage {
+  background-color: var(--lan-background);
   height: 100%;
   margin-bottom: 0px;
 }
-.EditorPage:focus
-{
-outline: 1px solid gray;
-
-}
-.EditorDisplayLine
-{
-  background-color: white;
+.EditorDisplayLine {
+  background-color: var(--lan-background);
   padding: 2px;
 }
-.EditorIcon
-{
-  background-color: #9C27B0;
-  color: white;
-  padding: 10px;
-  margin-right: 10px;
+.Box {
+  border: 1px solid var(--lan-content-box-border);
+  font-size: 13px;
+  padding: 5px;
+  color:var(--lan-color);
 }
-.Box
-{
-  border: 1px solid #eeeeee;
-  width:100%;
-}
-.Component
-{
+.Component {
   border: none;
   justify-content: center;
   padding: 3px;
-  background: white;
+  background-color: var(--lan-background);
   max-width: 30px;
   max-height: 30px;
-  margin: 1px
+  fill: var(--lan-color);
+  margin: 1px;
+  border: 0.2px solid transparent;
 }
-.Component:focus
+.Component-Hidden
 {
-outline:0;
-border:0.2px solid lightgray; /* here configure as your needs */
-color:#00c;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  margin: 0px;
+  padding: 0px;
 }
-.ComponentMenu
-{
-margin-bottom:5px;
+.Component:hover {
+  outline: 0;
+  border: 0.2px solid var(--lan-border-color); /* here configure as your needs */
+  margin: 1px !important;
+  cursor:pointer;
 }
-[contenteditable] 
+.Component:focus {
+  outline: 0;
+  border: 0.2px solid var(--lan-border-color); /* here configure as your needs */
+  margin: 1px !important;
+}
+.ComponentMenu {
+  margin-bottom: 5px;
+}
+.Component-Right
 {
+  float:right;
+}
+[contenteditable] {
   outline: 0px solid transparent;
+}
+.PlaceholderText
+{
+  font-size:12px;
+  font-family: var(--lan-default-font);
+}
+.Theme-Icon
+{
+  fill: var(--lan-theme-color);
 }
