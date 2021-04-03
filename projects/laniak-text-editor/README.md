@@ -1,24 +1,82 @@
 # LaniakTextEditor
 
+This library component is developed by Shashank Kawle for **Laniak**
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
-## Code scaffolding
+## Overview
 
-Run `ng generate component component-name --project laniak-text-editor` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project laniak-text-editor`.
-> Note: Don't forget to add `--project laniak-text-editor` or else it will be added to the default project in your `angular.json` file. 
+**Laniak Text Editor** is an Angular component to include basic text editor functionality in your web app.
 
-## Build
+```bash
+npm i laniak-text-editor
+```
 
-Run `ng build laniak-text-editor` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Publishing
+* Import Laniak Text Editor in your app.module.ts 
+```typescript
+import {LaniakTextEditorModule} from 'laniak-text-editor'
+```
 
-After building your library with `ng build laniak-text-editor`, go to the dist folder `cd dist/laniak-text-editor` and run `npm publish`.
+* Add module import entry in import array of app.module.ts
+```typescript
+ imports: [
+    LaniakTextEditorModule
+  ],
+```
 
-## Running unit tests
+* In app.component.html add Laniak Text Editor component. Also add reference to editor to access the data. In below case we have added reference as `#editor1`
+```html
+ <lan-text-editor #editor1></lan-text-editor>
+```
 
-Run `ng test laniak-text-editor` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* In app.component.ts access the data as follows:
+```typescript
+import { AfterViewInit } from '@angular/core';
 
-## Further help
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements  AfterViewInit
+{
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  @ViewChild('editor1') ed1: publicApiObjct | undefined
+
+  constructor() 
+  {}
+
+  ngAfterViewInit()
+  {
+    this.ed1?.setTheme("dark");
+  }
+
+  display()
+  {
+    console.log(this.ed1?.getRawText());
+  }
+}
+```
+
+> Note: Don not change `publicApiObjct` as it is required to specify type of editor reference.
+
+## APIs
+
+`publicApiObject` type provides three API for Laniak Text Editor.
+
+|API | Description|
+|---- | ----------|
+|setTheme() | Possible parameter values: `light` & `dark`. Default value is `light`. Use in **ngAfterViewInit** life cycle hook to specify default theme of editor.|
+|getRawText() | Parameters : none. Use to get raw text (without HTML formatting) from text editor.|
+|getFormattedText()| Parameters : none. Use to get HTML formatted text  from text editor.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

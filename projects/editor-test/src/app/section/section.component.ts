@@ -1,5 +1,5 @@
 import { AfterViewInit } from '@angular/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { publicApiObjct } from 'projects/laniak-text-editor/src/lib/I_laniak-public-api';
 
 
@@ -9,7 +9,6 @@ import { publicApiObjct } from 'projects/laniak-text-editor/src/lib/I_laniak-pub
   styleUrls: ['./section.component.css'],
 })
 export class SectionComponent implements  AfterViewInit
-
 {
 
   @ViewChild('editor1') ed1: publicApiObjct | undefined

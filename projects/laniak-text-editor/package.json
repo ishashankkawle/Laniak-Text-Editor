@@ -1,6 +1,18 @@
 {
   "name": "laniak-text-editor",
-  "version": "0.0.1",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ishashankkawle/Laniak-Text-Editor.git"
+  },
+  "keywords": [
+    "editor",
+    "laniak",
+    "texteditor",
+    "forntend"
+  ],
+  "author": "Shashank Kawle <skawle631@gmail.com> (https://ishashankkawle.github.io/)",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^11.0.4",
     "@angular/core": "^11.0.4"
