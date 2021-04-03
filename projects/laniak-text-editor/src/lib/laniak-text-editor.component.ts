@@ -1,11 +1,12 @@
 import { Component, ElementRef, AfterViewInit , ViewChild, Renderer2  } from '@angular/core';
+import { publicApiObjct } from './I_laniak-public-api';
 
 @Component({
   selector: 'lan-text-editor',
   templateUrl: './laniak-text-editor.component.html',
   styleUrls: ['./laniak-text-editor.component.css'],
 })
-export class LaniakTextEditorComponent implements AfterViewInit {
+export class LaniakTextEditorComponent implements AfterViewInit, publicApiObjct {
 
   notepad: any;
   fontColor = '#008800';
@@ -18,6 +19,27 @@ export class LaniakTextEditorComponent implements AfterViewInit {
   constructor(private elementRef: ElementRef) 
   { 
 
+  }
+
+  getRawText(): any
+  {
+    return this.notepad.innerText;
+  }
+  getFormattedText(): string 
+  {
+    return this.notepad.innerHTML;
+  }
+  setTheme(theme : string)
+  {
+    if(theme == "dark")
+    {
+      this.isLightTheme = false;
+    }
+    if(theme == "light")
+    {
+      this.isLightTheme = true;
+    }
+    this.applyTheme(this.isLightTheme);
   }
 
   ngAfterViewInit() 
@@ -91,35 +113,33 @@ export class LaniakTextEditorComponent implements AfterViewInit {
     document.execCommand('increaseFontSize', false);
   }
 
-  themeSwitch()
+  applyTheme(isLightTheme:boolean)
   {
-    this.isLightTheme = !this.isLightTheme;
-    console.log("isLightTheme = " + this.isLightTheme)
-    if(this.isLightTheme)
+    if(isLightTheme)
     {
-      console.log("LIGHT");
       this.elementRef.nativeElement.style.setProperty('--lan-background', '#FFF');
       this.elementRef.nativeElement.style.setProperty('--lan-border-color', '#d3d3d3');
       this.elementRef.nativeElement.style.setProperty('--lan-content-box-border', '#eeeeee');
       this.elementRef.nativeElement.style.setProperty('--lan-color', '#000');
       this.elementRef.nativeElement.style.setProperty('--lan-default-font', 'Arial');
       this.elementRef.nativeElement.style.setProperty('--lan-theme-color', 'blue');
-      let element = document.getElementById('lan-theme-switch') as HTMLElement
-      if(element) element.innerHTML = this.themeDarkSVG;
+      this.elementRef.nativeElement.querySelector("#lan-theme-switch").innerHTML = this.themeDarkSVG;
     }
     else
     {
-      console.log("DARK");
-      this.elementRef.nativeElement.style.setProperty('--lan-background', '#121212');
-      this.elementRef.nativeElement.style.setProperty('--lan-border-color', '#646464');
-      this.elementRef.nativeElement.style.setProperty('--lan-content-box-border', '#c9c1c1');
-      this.elementRef.nativeElement.style.setProperty('--lan-color', '#d4d4d4');
+      this.elementRef.nativeElement.style.setProperty('--lan-background', '#353535');
+      this.elementRef.nativeElement.style.setProperty('--lan-border-color', '#201f1f');
+      this.elementRef.nativeElement.style.setProperty('--lan-content-box-border', '#4d4d4d');
+      this.elementRef.nativeElement.style.setProperty('--lan-color', '#b8b8b8');
       this.elementRef.nativeElement.style.setProperty('--lan-default-font', 'Arial');
       this.elementRef.nativeElement.style.setProperty('--lan-theme-color', 'orange');
-      let element = document.getElementById('lan-theme-switch')
-      if(element) element.innerHTML = this.themeLightSVG;
-
+      this.elementRef.nativeElement.querySelector("#lan-theme-switch").innerHTML = this.themeLightSVG;
     }
+  }
+  themeSwitch()
+  {
+    this.isLightTheme = !this.isLightTheme;
+    this.applyTheme(this.isLightTheme);
   }
 
   clearData()

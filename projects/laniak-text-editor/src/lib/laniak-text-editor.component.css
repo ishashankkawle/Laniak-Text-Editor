@@ -16,7 +16,7 @@
 .EditorPanal {
   background-color: var(--lan-background);
   height: auto;
-  padding: 5px;
+  padding: 10px;
   margin: 5px !important;
   border-radius:3px;
   border: 0.5px solid var(--lan-border-color);
@@ -47,6 +47,12 @@
   fill: var(--lan-color);
   margin: 1px;
   border: 0.2px solid transparent;
+}
+.Component-sec
+{
+  display: inline;
+  height: max-content;
+  border-left: 0.5px solid lightgray;
 }
 .Component-Hidden
 {
