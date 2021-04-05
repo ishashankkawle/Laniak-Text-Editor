@@ -7,11 +7,14 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 **Laniak Text Editor** is an Angular component to include basic text editor functionality in your web app.
 
+![Laniak Text Editor Themes](https://raw.githubusercontent.com/ishashankkawle/Laniak-Text-Editor/master/projects/assets/Lan_Text_Editor_Themes.PNG)
+
+## Usage
+
+* Install npm package for Laniak Text Editor in your project.
 ```bash
 npm i laniak-text-editor
 ```
-
-## Usage
 
 * Import Laniak Text Editor in your app.module.ts 
 ```typescript
@@ -33,6 +36,8 @@ import {LaniakTextEditorModule} from 'laniak-text-editor'
 * In app.component.ts access the data as follows:
 ```typescript
 import { AfterViewInit } from '@angular/core';
+import { publicApiObject } from 'laniak-text-editor/lib/I_laniak-public-api';
+
 
 @Component({
   selector: 'app-root',
@@ -42,7 +47,7 @@ import { AfterViewInit } from '@angular/core';
 export class AppComponent implements  AfterViewInit
 {
 
-  @ViewChild('editor1') ed1: publicApiObjct | undefined
+  @ViewChild('editor1') ed1: publicApiObject | undefined
 
   constructor() 
   {}
@@ -59,7 +64,7 @@ export class AppComponent implements  AfterViewInit
 }
 ```
 
-> Note: Don not change `publicApiObjct` as it is required to specify type of editor reference.
+> Note: Do not change `publicApiObject` as it is required to specify type of editor reference.
 
 ## APIs
 
